@@ -1,0 +1,4 @@
+{
+  "1": { "coin": "ETH", "amount": 100 },
+  "2": { "coin": "BTC", "amount": 2 }
+}

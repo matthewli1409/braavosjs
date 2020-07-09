@@ -1,0 +1,25 @@
+{
+  "1": {
+    "EXCHANGE": "BITSTAMP",
+    "KEY": "",
+    "SECRET": "",
+    "USERNAME": "",
+    "FUNDNAME": "BITSTAMP_PRINTER"
+  },
+  "2": {
+    "EXCHANGE": "BINANCE",
+    "KEY": "",
+    "SECRET": "",
+    "FUNDNAME": "BINANCE_PUNT_SHOP"
+  },
+  "3": {
+    "EXCHANGE": "BITFINEX",
+    "KEY": "",
+    "SECRET": "",
+    "FUNDNAME": "BFX_MOON"
+  },
+  "4": {
+    "EXCHANGE": "COLDWALLET",
+    "FUNDNAME": "COLDWALLET"
+  }
+}

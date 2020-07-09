@@ -1,0 +1,10 @@
+node_modules
+build
+npm-debug.log
+.env
+.DS_Store
+
+config/config.json
+data/cold_aum.txt
+data/hot_aum.txt
+data/coldwallet.json
