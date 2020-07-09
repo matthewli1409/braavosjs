@@ -25,3 +25,9 @@ If you have a coldwallet
 ```bash
 cp data/coldwallet.example data/coldwallet.json
 ```
+
+To execute the code
+
+```bash
+npm start
+```
