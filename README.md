@@ -1,11 +1,9 @@
-# Rubbish code to get AUM and position from exchanges & wallets
-
-A Node.JS reference implementation of the Bitfinex API
+# Rubbish code to get AUM and positions from exchanges & wallets
 
 ## Supported Exchanges
 
-- Bitfinex
 - Binance
+- Bitfinex
 - Bitstamp
 
 ## Installation
@@ -22,7 +20,7 @@ Fill in config details that include apikeys and secret.
 cp config/config.example config/config.json
 ```
 
-If you need coldwallet
+If you have a coldwallet
 
 ```bash
 cp data/coldwallet.example data/coldwallet.json
