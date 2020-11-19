@@ -8,3 +8,4 @@ config/config.json
 data/cold_aum.txt
 data/hot_aum.txt
 data/coldwallet.json
+data/total_aum_usd.txt

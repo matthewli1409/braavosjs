@@ -27,6 +27,7 @@ const main = async () => {
         hotAum += aumObj.aum;
         aums.push(aumObj);
         pos.push(_.pos);
+        console.log(`${m.FUNDNAME} aum: ${aumObj.aum}`);
         break;
       }
       case 'BINANCE': {
@@ -36,6 +37,7 @@ const main = async () => {
         hotAum += aumObj.aum;
         aums.push(aumObj);
         pos.push(_.pos);
+        console.log(`${m.FUNDNAME} aum: ${aumObj.aum}`);
         break;
       }
       case 'BITSTAMP': {
@@ -45,6 +47,7 @@ const main = async () => {
         hotAum += aumObj.aum;
         aums.push(aumObj);
         pos.push(_.pos);
+        console.log(`${m.FUNDNAME} aum: ${aumObj.aum}`);
         break;
       }
       case 'COLDWALLET': {
@@ -54,14 +57,12 @@ const main = async () => {
         coldAum += aumObj.aum;
         aums.push(aumObj);
         pos.push(_.pos);
+        console.log(`${m.FUNDNAME} aum: ${aumObj.aum}`);
         break;
       }
     }
   });
   await Promise.all(promises);
-
-  console.log('AUM BY EXCHANGE:');
-  console.log(aums);
 
   const _posUsd = pos.map(p => p.usd);
   const _posSize = pos.map(p => p.size);
@@ -84,18 +85,39 @@ const main = async () => {
     }
   });
   console.log('\nPOSITIONS BY USD:');
+
+  let coinUsd = 0;
+  for (const p in posUsd) {
+    if (!['usd', 'gbp', 'eur'].includes(p)) {
+      coinUsd += posUsd[p];
+    }
+  }
+
   console.log(Object.entries(posUsd).sort((a, b) => b[1] - a[1]));
 
   const totalAum = aums.reduce((prev, next) => prev + next.aum, 0);
-  console.log(`\nCOLD AUM (Base): ${(coldAum / baseCcy).toFixed(2)}`);
+  console.log(`\nGBPUSD: ${baseCcy}`);
+  console.log(`COLD AUM (Base): ${(coldAum / baseCcy).toFixed(2)}`);
   console.log(`HOT AUM (Base): ${(hotAum / baseCcy).toFixed(2)}`);
   console.log(`AUM ($): ${totalAum.toFixed(2)}`);
   console.log(`AUM (Base): ${(totalAum / baseCcy).toFixed(2)}`);
+
+  const expPerc = coinUsd / totalAum;
+  console.log(
+    `\nCOIN ($) Invested ${coinUsd.toFixed(2)} (${(expPerc * 100).toFixed(2)}%)`
+  );
+  const coinGbp = coinUsd / baseCcy;
+  console.log(
+    `COIN (£) Invested ${coinGbp.toFixed(2)} (${(expPerc * 100).toFixed(2)}%)`
+  );
 
   fs.writeFile('data/cold_aum.txt', coldAum / baseCcy, function (err) {
     if (err) return console.log(err);
   });
   fs.writeFile('data/hot_aum.txt', hotAum / baseCcy, function (err) {
+    if (err) return console.log(err);
+  });
+  fs.writeFile('data/total_aum_usd.txt', totalAum, function (err) {
     if (err) return console.log(err);
   });
 };
